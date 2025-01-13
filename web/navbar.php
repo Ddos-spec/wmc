@@ -129,7 +129,7 @@
 <nav id="navbar">
     <div class="navbar-container">
         <div class="logo" style="margin-left: 50px;"> <!-- Geser logo ke kanan -->
-            <img src="../gambar/logo.png" alt="Brand Logo">
+            <img src="/wmc/gambar/logo.png" alt="Brand Logo"> <!-- Updated logo path -->
         </div>
         <div class="menu-toggle" id="menuToggle">
             <i class="fas fa-bars"></i>
