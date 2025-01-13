@@ -136,7 +136,7 @@
         </div>
         <ul class="menu" id="menu">
             <li>
-                <a href="#Produk">Produk</a>
+                <a href="produk/produk.php">Produk</a> <!-- Updated link -->
                 <ul class="submenu">
                     <li><a href="#BMX">BMX</a></li>
                     <li><a href="#ChildrensBikes">Sepeda Anak</a></li>
