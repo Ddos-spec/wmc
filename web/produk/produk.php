@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -58,31 +58,31 @@
                     <label for="TIPE" class="form-label">TIPE</label>
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                            Select Type
+                            <i class="fas fa-arrow-down"></i> Pilih Tipe
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <li><label class="dropdown-item"><input type="radio" name="bikeType" value="Aegyo Series"> Aegyo Series</label></li>
                             <li><label class="dropdown-item"><input type="radio" name="bikeType" value="CTB"> CTB</label></li>
-                            <li><label class="dropdown-item"><input type="radio" name="bikeType" value="Kids Bike"> Kids Bike</label></li>
-                            <li><label class="dropdown-item"><input type="radio" name="bikeType" value="BMX Bike"> BMX Bike</label></li>
-                            <li><label class="dropdown-item"><input type="radio" name="bikeType" value="Mountain Bike (MTB)"> Mountain Bike (MTB)</label></li>
+                            <li><label class="dropdown-item"><input type="radio" name="bikeType" value="Kids Bike"> Sepeda Anak</label></li>
+                            <li><label class="dropdown-item"><input type="radio" name="bikeType" value="BMX Bike"> Sepeda BMX</label></li>
+                            <li><label class="dropdown-item"><input type="radio" name="bikeType" value="Mountain Bike (MTB)"> Sepeda Gunung (MTB)</label></li>
                         </ul>
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="slider" class="form-label">Price Range</label>
+                    <label for="slider" class="form-label">Rentang Harga</label>
                     <div id="slider"></div>
                     <div class="d-flex justify-content-between mt-2">
                         <span id="slider-value-lower"></span>
                         <span id="slider-value-upper"></span>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Apply Filters</button>
+                <button type="submit" class="btn btn-primary">Terapkan Filter</button>
             </form>
         </div>
         <div class="col-md-9">
-            <!-- Product listing will go here -->
-            <p>Product listing will be displayed here based on the selected filters.</p>
+            <!-- Daftar produk akan ditampilkan di sini berdasarkan filter yang dipilih -->
+            <p>Daftar produk akan ditampilkan di sini berdasarkan filter yang dipilih.</p>
         </div>
     </div>
 </div>
@@ -92,27 +92,48 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.3/nouislider.min.js"></script>
 <script>
+    // Inisialisasi slider untuk rentang harga
     var slider = document.getElementById('slider');
 
     noUiSlider.create(slider, {
-        start: [0, 80],
+        start: [0, 2500000], // Set the price range from 0 to 2,500,000
         connect: true,
         range: {
             'min': 0,
-            'max': 100
+            'max': 2500000
+        },
+        tooltips: true, // Show tooltips
+        format: {
+            to: function (value) {
+                return 'Rp' + Math.round(value); // Format the value to show Rp
+            },
+            from: function (value) {
+                return value.replace('Rp', ''); // Remove Rp for internal use
+            }
         }
     });
 
     var sliderValueLower = document.getElementById('slider-value-lower');
     var sliderValueUpper = document.getElementById('slider-value-upper');
 
+    // Update nilai slider saat diubah
     slider.noUiSlider.on('update', function (values, handle) {
         if (handle) {
-            sliderValueUpper.innerHTML = 'Rp' + Math.round(values[handle]);
+            sliderValueUpper.innerHTML = values[handle];
         } else {
-            sliderValueLower.innerHTML = 'Rp' + Math.round(values[handle]);
+            sliderValueLower.innerHTML = values[handle];
         }
+    });
+
+    // Customizing the slider appearance
+    slider.noUiSlider.on('set', function () {
+        var handle = slider.noUiSlider.get();
+        // Change the slider line color
+        slider.style.setProperty('--noUi-connect', '#ffb71b');
+        // Change the handle shape to moon shape (custom CSS needed)
+        // This part requires additional CSS to achieve the moon shape
     });
 </script>
 
 </body>
+</html>
