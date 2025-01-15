@@ -129,7 +129,9 @@
 <nav id="navbar">
     <div class="navbar-container">
         <div class="logo" style="margin-left: 50px;"> <!-- Geser logo ke kanan -->
-            <img src="/wmc/gambar/logo.png" alt="Brand Logo"> <!-- Updated logo path -->
+            <a href="/wmc/web/index.php">
+                <img src="/wmc/gambar/logo.png" alt="Brand Logo">
+            </a>
         </div>
         <div class="menu-toggle" id="menuToggle">
             <i class="fas fa-bars"></i>
